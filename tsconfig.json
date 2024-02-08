@@ -33,7 +33,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/app/layout.jsx"
-  ],
+, "prisma/client.js"  ],
   "exclude": [
     "node_modules"
   ]
