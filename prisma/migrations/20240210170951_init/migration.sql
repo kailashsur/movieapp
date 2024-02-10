@@ -14,17 +14,20 @@ CREATE TABLE "User" (
 -- CreateTable
 CREATE TABLE "Movie" (
     "id" SERIAL NOT NULL,
-    "banner" TEXT NOT NULL,
+    "banner" TEXT NOT NULL DEFAULT '',
     "title" TEXT,
-    "genre" TEXT NOT NULL,
-    "duration" VARCHAR(50) NOT NULL,
-    "release" VARCHAR(50) NOT NULL,
-    "language" VARCHAR(50) NOT NULL,
-    "cast" VARCHAR(50) NOT NULL,
-    "size" VARCHAR(50) NOT NULL,
-    "moviestory" VARCHAR(50) NOT NULL,
-    "description" TEXT NOT NULL,
+    "genre" TEXT NOT NULL DEFAULT '',
+    "duration" VARCHAR(50) NOT NULL DEFAULT '',
+    "release" VARCHAR(50) NOT NULL DEFAULT '',
+    "language" VARCHAR(50) NOT NULL DEFAULT '',
+    "cast" VARCHAR(50) NOT NULL DEFAULT '',
+    "size" VARCHAR(50) NOT NULL DEFAULT '',
+    "moviestory" VARCHAR(50) NOT NULL DEFAULT '',
+    "description" TEXT NOT NULL DEFAULT '',
     "authorId" INTEGER NOT NULL,
+    "tag" VARCHAR(125) NOT NULL DEFAULT '',
+    "watchlink" TEXT NOT NULL DEFAULT '',
+    "screenshort" TEXT NOT NULL DEFAULT '',
 
     CONSTRAINT "Movie_pkey" PRIMARY KEY ("id")
 );
