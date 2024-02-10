@@ -13,6 +13,7 @@ import {
     CardTitle,
 } from "@/components/ui/card"
 import Link from "next/link"
+import Image from "next/image"
 
 
 
@@ -47,7 +48,12 @@ export default function LatestMovie() {
                             <article className="mx-auto my-2 w-full h-auto md:max-h-40 flex flex-col rounded-md bg-transparent md:flex-row border overflow-hidden items-center">
 
                                 <div className="shrink-0 mr-2 max-w-40 w-full h-40">
-                                    <img className=" w-full h-full" src={banner} alt={title} />
+                                <Image 
+                                src={banner}
+                                alt={title}
+                                height={160}
+                                />
+                                    
                                 </div>
 
                                 <div className="p-4  w-full">

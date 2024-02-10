@@ -2,16 +2,16 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { lookInSession } from '../common/session';
 
-// Create the UserContext
+interface UserContextProviderProps {
+  children: React.ReactNode;
+}
+
 export const UserContext = createContext<any>(null);
 
-// UserContext Provider component
-export const UserContextProvider: React.FC = ({ children }) => {
-  // Define state or any context-related logic here
+export const UserContextProvider: React.FC<UserContextProviderProps> = ({ children }) => {
   const [userAuth, setUserAuth] = useState<any>({ data: { access_token: null } });
 
   useEffect(() => {
-    // Check if window is defined (client-side)
     if (typeof window !== 'undefined') {
       let userInSession = lookInSession("user");
       userInSession ? setUserAuth(JSON.parse(userInSession)) : setUserAuth({ data: { access_token: null } });
@@ -21,5 +21,4 @@ export const UserContextProvider: React.FC = ({ children }) => {
   return <UserContext.Provider value={{ userAuth, setUserAuth }}>{children}</UserContext.Provider>;
 };
 
-// Custom hook to use the UserContext
 export const useUserContext = () => useContext(UserContext);

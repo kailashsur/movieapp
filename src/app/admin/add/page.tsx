@@ -28,7 +28,7 @@ export default function AddMovie() {
 
   useEffect(() => {
     !access_token ? goToAuth() : ""
-  }, [access_token]);
+  }, [access_token,goToAuth]);
 
 
   const onSubmit = async (data: any) => {

@@ -30,7 +30,7 @@ export default function Admin() {
 
   useEffect(() => {
     !access_token ? goToAuth() : ""
-  }, [access_token]);
+  }, [access_token, goToAuth]);
 
   return (
    

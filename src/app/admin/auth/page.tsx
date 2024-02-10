@@ -23,7 +23,7 @@ export default function AuthenticationPage() {
     if (access_token) {
       goToAdmin();
     }
-  }, [access_token]);
+  }, [access_token,goToAdmin]);
 
   // Render button for authenticated user
   return (
@@ -63,7 +63,7 @@ export default function AuthenticationPage() {
 
             {
               pageState === "login" ?
-              <p>Don't have an account? <span className=" underline hover:text-purple-600 cursor-pointer"
+              <p>Don&apos;t have an account? <span className=" underline hover:text-purple-600 cursor-pointer"
               onClick={()=>setPageState("signup")}
               >Create account</span></p>
               : 
