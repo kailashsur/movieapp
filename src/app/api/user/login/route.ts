@@ -31,6 +31,15 @@ export async function POST(request: NextRequest, response: NextResponse) {
       where: {
         email: email,
       },
+      select: {
+        id: true,
+        admin: true,
+        profile_img: true,
+        name: true,
+        email: true,
+        password : true,
+        createdAt: true,
+      },
     });
 
     if (!userData) {
@@ -43,10 +52,13 @@ export async function POST(request: NextRequest, response: NextResponse) {
     if (userData.password) {
       bcrypt.compare(password, userData.password, (err, result) => {
         if (err) {
-          return NextResponse.json({ status : 403, error: "Error occured while login please try again" });
+          return NextResponse.json({
+            status: 403,
+            error: "Error occured while login please try again",
+          });
         }
         if (!result) {
-          return NextResponse.json({ status : 403, error: "Incorect Password" });
+          return NextResponse.json({ status: 403, error: "Incorect Password" });
         } else {
           return NextResponse.json(formateDatatoSend(userData));
         }
@@ -54,11 +66,10 @@ export async function POST(request: NextRequest, response: NextResponse) {
     }
 
     return NextResponse.json({
-        status : 200,
-        success : "User Loged in successfully",
-        data : formateDatatoSend(userData)
-    })
-    
+      status: 200,
+      success: "User Loged in successfully",
+      data: formateDatatoSend(userData),
+    });
   } catch (error) {
     console.error("Error processing POST request:", error);
 

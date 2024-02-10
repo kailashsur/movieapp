@@ -6,6 +6,7 @@ const formateDatatoSend = (newUser : any) => {
     const access_token = jwt.sign({ id: newUser.id }, process.env.SECRET_ACCESS_KEY as string);
 
     return {
+        id : newUser.id,
         admin: newUser.admin,
         access_token,
         profile_img: newUser.profile_img,

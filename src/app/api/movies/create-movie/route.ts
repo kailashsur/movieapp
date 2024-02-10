@@ -11,6 +11,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
     // Parse incoming request body to extract movie data
     const {
       id,
+      banner,
       title,
       genre,
       duration,
@@ -23,14 +24,15 @@ export async function POST(request: NextRequest, response: NextResponse) {
       authorId,
       watchlink,
       screenshort,
+      tag
     } = await request.json();
 
     // Query the database to check if the movie already exists
-    let existingMovie = await prisma.movie.findUnique({
+    let existingMovie = id ?  await prisma.movie.findUnique({
       where: {
         id: id,
       },
-    });
+    }) : null
 
     // If the movie exists, update its data
     if (existingMovie) {
@@ -39,6 +41,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
           id: existingMovie.id,
         },
         data: {
+          banner : banner,
           title: title,
           genre: genre,
           duration: duration,
@@ -51,6 +54,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
           authorId: authorId,
           watchlink: watchlink,
           screenshort: screenshort,
+          tag : tag
         },
       });
       return NextResponse.json({
@@ -63,6 +67,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
       // If the movie doesn't exist, create a new movie entry
       const newMovie = await prisma.movie.create({
         data: {
+          banner : banner,
           title: title,
           genre: genre,
           duration: duration,
@@ -75,7 +80,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
           authorId: authorId,
           watchlink: watchlink,
           screenshort: screenshort,
-          banner: "", // Add a default or empty value for the missing property 'banner'
+          tag : tag
         },
       });
       return NextResponse.json({

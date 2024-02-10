@@ -24,19 +24,20 @@ model User {
 
 model Movie {
   id        Int      @id @default(autoincrement())
-  banner String
+  banner String @default("")
   title     String?
-  genre String
-  duration String @db.VarChar(50)
-  release String @db.VarChar(50)
-  language String @db.VarChar(50)
-  cast String @db.VarChar(50)
-  size String @db.VarChar(50)
-  moviestory String @db.VarChar(50)
-  description String
+  genre String @default("")
+  duration String @db.VarChar(50) @default("")
+  release String @db.VarChar(50) @default("")
+  language String @db.VarChar(50) @default("")
+  cast String @db.VarChar(50) @default("")
+  size String @db.VarChar(50) @default("")
+  moviestory String @db.VarChar(50) @default("")
+  description String @default("") 
   author User @relation(fields: [authorId], references: [id])
   authorId Int
+  tag String @db.VarChar(125) @default("")
 
-  watchlink String
-  screenshort String
+  watchlink String @default("")
+  screenshort String @default("")
 }
