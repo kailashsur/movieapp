@@ -6,6 +6,7 @@ interface UserContextProviderProps {
   children: React.ReactNode;
 }
 
+
 export const UserContext = createContext<any>(null);
 
 export const UserContextProvider: React.FC<UserContextProviderProps> = ({ children }) => {
@@ -22,3 +23,5 @@ export const UserContextProvider: React.FC<UserContextProviderProps> = ({ childr
 };
 
 export const useUserContext = () => useContext(UserContext);
+
+//--------------------------------------------

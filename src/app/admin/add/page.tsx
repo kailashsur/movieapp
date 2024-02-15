@@ -25,6 +25,9 @@ export default function AddMovie() {
   const goToAuth = () => {
     router.push('/admin/auth');
   }
+  const goToHome = ()=>{
+    router.push("/");
+  }
 
   useEffect(() => {
     !access_token ? goToAuth() : ""
@@ -60,7 +63,9 @@ export default function AddMovie() {
           'Authorization': `Bearer ${access_token}`
         }
       })
-      console.log(movieDataRes);
+      goToHome();
+      // console.log(movieDataRes);
+
     } catch (error) {
       console.log("Error movie creating : ", error);
 

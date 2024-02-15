@@ -16,6 +16,12 @@ export async function POST(request: NextRequest, response: NextResponse) {
     // Query the database to get movies for the requested page
     const movies = await prisma.movie.findMany({
         skip: offset,
+        select : {
+          banner : true,
+          id : true,
+          title : true,
+          tag : true,
+        },
         take: limit,
         orderBy: {
             id: 'desc', // You can change the ordering as per your requirement
