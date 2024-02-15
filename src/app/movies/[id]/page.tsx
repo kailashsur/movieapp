@@ -73,14 +73,16 @@ console.log(data);
 
                     <div> Quality : <span> {data.size} </span> </div>
 
-                    <hr />
+                    <hr className=" border text-black" />
 
-                    <div>
+                    <div className=" max-w-md grid place-items-center gap-4 mt-4">
                         <p>SCREENSHORT</p>
                         <img src={data.screenshort}  />
                     </div>
 
-                    <Button> Watch Now </Button>
+                    <a href={data.watchlink}
+                    className=" my-16 bg-green-600 text-white px-4 py-2 font-sans"
+                    > Watch Now </a>
                     </>
                     
                 )
