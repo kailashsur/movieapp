@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import { Toaster } from "@/components/ui/toaster";
+import Footer from "@/components/footer.component";
 
 
 
@@ -34,6 +35,7 @@ export default function RootLayout({
 
         </main>
         <Toaster/>
+        <Footer/>
 
       </body>
     </html>
